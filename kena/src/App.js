@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import FileUpLoad from './FileUpLoad.js';
+import UploadedFiles from './UploadedFiles.js'
 
 class App extends React.Component {
   constructor(props){
@@ -26,6 +27,9 @@ class App extends React.Component {
     {console.log('test', this.state.uploadedFiles)}
     return (
       <div>
+        <UploadedFiles
+          UploadedFiles={this.state.uploadedFiles}
+        />
         <FileUpLoad
           upLoadHandler={this.upLoadHandler}
         />
