@@ -1,25 +1,42 @@
 import React from 'react';
 import UploadedFileForm from './UploadedFileForm.js';
+import './UploadedFiles.css';
 
 const UploadedFiles = (props) => {
   let list = props.UploadedFiles.map((file, idx) => {
-    let ShowUploadedFileForm = null
-    if(file.showEditForm){
-      // ShowUploadedFileForm = <UploadedFileForm onChange={() => props.FileFromHandler(idx)}/>
-      ShowUploadedFileForm = <UploadedFileForm  FileFromHandler={props.FileFromHandler} idx={idx}/>
 
+    let ShowUploadedFileForm = null
+    let customClass = null
+
+    if(file.showEditForm){
+      customClass= 'fileName'
+      ShowUploadedFileForm = <UploadedFileForm  
+        FileFromHandler={props.FileFromHandler} 
+        idx={idx}
+        fileName={file.name}
+        fileComment={file.comment}
+      />
     }
 
     return(
-      <div key={file.name} onClick={() => props.showEditFileFormHandler(idx)}>
-        {file.name}
-        {ShowUploadedFileForm}
-      </div>
+        <li key={file.name}>
+          <div
+            onClick={() => props.showEditFileFormHandler(idx)}
+            className={customClass}
+          >
+            {file.name}
+          </div>
+          {ShowUploadedFileForm}
+        </li>   
     )
   })
+
   return(
-    <div>
-      {list}
+    <div className='FileNamelistContainer'>
+        <div>Uploaded Files:</div>
+        <ul >
+          {list}
+        </ul>
     </div>
   )
 };

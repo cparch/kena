@@ -3,7 +3,7 @@ import React from 'react';
 const FileUpLoad = (props) => {
   return (
     <div>
-      <label  for="avatar">Choose a profile picture:</label>
+      <label  for="avatar">Choose an audio file to upload: </label>
       <input
         onChange={props.upLoadHandler} 
         type="file"

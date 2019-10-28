@@ -1,0 +1,11 @@
+.formContainer{
+  margin: 2%;
+  border: 1px black solid;
+  padding: 1%;
+}
+
+.inputTitle{
+  float: left;
+  width: 21%;
+  margin-top: 6px;
+}

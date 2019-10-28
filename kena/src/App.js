@@ -26,7 +26,13 @@ class App extends React.Component {
 
   showEditFileFormHandler(idx){
     let updatedUploadedFiles = [...this.state.uploadedFiles];
-    updatedUploadedFiles[idx].showEditForm = true
+    updatedUploadedFiles[idx].showEditForm = !updatedUploadedFiles[idx].showEditForm
+
+    updatedUploadedFiles.map((fileObj, i) => {
+      if(i !== idx){
+        fileObj.showEditForm = false
+      }
+    })
 
     this.setState({
       uploadedFiles: updatedUploadedFiles
@@ -48,14 +54,14 @@ class App extends React.Component {
   render(){
 
     return (
-      <div>
+      <div className='App'>
+        <FileUpLoad
+          upLoadHandler={this.upLoadHandler}
+        />
         <UploadedFiles
           UploadedFiles={this.state.uploadedFiles}
           showEditFileFormHandler={this.showEditFileFormHandler}
           FileFromHandler={this.FileFromHandler}
-        />
-        <FileUpLoad
-          upLoadHandler={this.upLoadHandler}
         />
       </div>
     );
