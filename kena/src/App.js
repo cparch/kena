@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import FileUpLoad from './FileUpLoad.js';
 import UploadedFiles from './UploadedFiles.js'
@@ -10,13 +9,36 @@ class App extends React.Component {
     this.state = {
       uploadedFiles: [],
     }
+    this.showEditFileFormHandler = this.showEditFileFormHandler.bind(this);
     this.upLoadHandler = this.upLoadHandler.bind(this);
+    this.FileFromHandler = this.FileFromHandler.bind(this);
+  }
+
+  
+  FileFromHandler(idx, event){
+    let updatedUploadedFiles = [...this.state.uploadedFiles];
+    updatedUploadedFiles[idx][event.target.name] = event.target.value
+
+    this.setState({
+      uploadedFiles: updatedUploadedFiles
+    })
+  }
+
+  showEditFileFormHandler(idx){
+    let updatedUploadedFiles = [...this.state.uploadedFiles];
+    updatedUploadedFiles[idx].showEditForm = true
+
+    this.setState({
+      uploadedFiles: updatedUploadedFiles
+    })
   }
 
   upLoadHandler(event){
-    // console.log(event.target.files[0])
     let updatedUploadedFiles = [...this.state.uploadedFiles];
-    updatedUploadedFiles.push(event.target.files[0]);
+    let newFileObj = event.target.files[0]
+    newFileObj.comment = '';
+    newFileObj.showEditForm = false;
+    updatedUploadedFiles.push(newFileObj);
 
     this.setState({
       uploadedFiles: updatedUploadedFiles
@@ -24,11 +46,13 @@ class App extends React.Component {
   }
 
   render(){
-    {console.log('test', this.state.uploadedFiles)}
+
     return (
       <div>
         <UploadedFiles
           UploadedFiles={this.state.uploadedFiles}
+          showEditFileFormHandler={this.showEditFileFormHandler}
+          FileFromHandler={this.FileFromHandler}
         />
         <FileUpLoad
           upLoadHandler={this.upLoadHandler}
