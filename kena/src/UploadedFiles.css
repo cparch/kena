@@ -3,6 +3,10 @@
 }
 
 .fileName{
+  cursor: pointer;
+}
+.fileNameClicked{
   text-decoration: underline;
   font-weight: bold;
+  
 }

@@ -14,7 +14,6 @@ class App extends React.Component {
     this.FileFromHandler = this.FileFromHandler.bind(this);
   }
 
-  
   FileFromHandler(idx, event){
     let updatedUploadedFiles = [...this.state.uploadedFiles];
     updatedUploadedFiles[idx][event.target.name] = event.target.value
@@ -44,6 +43,7 @@ class App extends React.Component {
     let newFileObj = event.target.files[0]
     newFileObj.comment = '';
     newFileObj.showEditForm = false;
+    newFileObj.customName = newFileObj.name
     updatedUploadedFiles.push(newFileObj);
 
     this.setState({

@@ -6,25 +6,25 @@ const UploadedFiles = (props) => {
   let list = props.UploadedFiles.map((file, idx) => {
 
     let ShowUploadedFileForm = null
-    let customClass = null
+    let customClass = 'fileName'
 
     if(file.showEditForm){
-      customClass= 'fileName'
+      customClass= 'fileName fileNameClicked'
       ShowUploadedFileForm = <UploadedFileForm  
         FileFromHandler={props.FileFromHandler} 
         idx={idx}
-        fileName={file.name}
+        fileName={file.customName}
         fileComment={file.comment}
       />
     }
 
     return(
-        <li key={file.name}>
+        <li key={file.customName}>
           <div
             onClick={() => props.showEditFileFormHandler(idx)}
             className={customClass}
           >
-            {file.name}
+            {file.customName}
           </div>
           {ShowUploadedFileForm}
         </li>   

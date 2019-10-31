@@ -1,12 +1,14 @@
 import React from 'react';
+import './FileUpLoad.css';
 
 const FileUpLoad = (props) => {
+
   return (
-    <div>
-      <label  for="avatar">Choose an audio file to upload: </label>
-      <input
+    <div className="upload-btn-wrapper">
+      <button className="btn">Upload a file</button>
+      <input 
+        type="file" 
         onChange={props.upLoadHandler} 
-        type="file"
         id="avatar" 
         name="avatar"
         accept="audio/*"

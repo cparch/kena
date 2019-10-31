@@ -4,11 +4,10 @@ import './UploadedFileForm.css';
 const UploadedFileForm = (props) => {
   return (
     <form className='formContainer'>
-
-      <label >
-          <div className='inputTitle'> name: </div>
+      <label>
+          <div className='inputTitle'>Name: </div>
           <input 
-            name='name'
+            name='customName' 
             onChange={(event) => props.FileFromHandler(props.idx, event)}
             type='text'
             value={props.fileName}
@@ -19,12 +18,12 @@ const UploadedFileForm = (props) => {
       <br/>
 
       <label>
-        <div className='inputTitle'>Comments about uploaded File:</div>
+        <div className='inputTitle'>Comments about uploaded File: </div>
         <textarea 
           name='comment'
           rows="4" 
           cols="50"
-          onChange={(event)=> props.FileFromHandler(props.idx, event)} 
+          onChange={(event) => props.FileFromHandler(props.idx, event)} 
           value={props.fileComment}
         />
       </label>
